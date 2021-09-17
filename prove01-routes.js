@@ -15,7 +15,7 @@ const requestHandler = (req, res) => {
         res.setHeader('Content-Type', 'text/html');
         res.write('<html>');
         res.write('<head><title>Assignment 1</title></head>');
-        res.write('<body><ul><li>User 1</li><li>User 2</li></ul></body>');
+        res.write('<body><ul><li>James Bond</li><li>Indiana Jones</li></ul></body>');
         res.write('</html>');
         return res.end();
     }
@@ -35,9 +35,6 @@ const requestHandler = (req, res) => {
                 return res.end();
             });
         });
-        //res.statusCode = 302;
-        //res.setHeader('Location', '/');
-        //res.end();
     }
 };
 
