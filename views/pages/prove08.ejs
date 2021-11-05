@@ -43,13 +43,7 @@
             <% } %>
 
       </div>
-      <!-- Pagination button generation -->
-      <form class="actions container">
-        <% for(var i=1; i <=numPages; i++) { %>
-          <a href="?page=<%= i %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==i) ? 'btn-primary' : 'btn-default' %>">
-            <%= i %>
-          </a>
-          <% } %>
+      <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
             </div>
   </body>
 
