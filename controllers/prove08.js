@@ -13,15 +13,6 @@ const renderIndex = (req, res, json) => {
         x.name.toLowerCase().includes(searchedValue.toLowerCase())
     );
 
-    // let stuff = {
-    //     data: filteredData.slice(indexStart, indexEnd), // For JSON/Array and not Mongoose, .slice() works best.
-    //     path: 'proveAssignments/03',
-    //     title: 'Lesson 3 Prove Assignment',
-    //     searchedValue: searchedValue,
-    //     page: page,
-    //     numPages: Math.ceil(filteredData.length / ITEMS_PER_PAGE),
-    // };
-
     res.render('../views/pages/prove08', {
         data: filteredData.slice(indexStart, indexEnd),
         path: 'proveAssignments/08',
@@ -37,20 +28,16 @@ const renderIndex = (req, res, json) => {
 };
 
 exports.processJson = (req, res, next) => {
-    // read json
     var url = 'https://byui-cse.github.io/cse341-course/lesson03/items.json';
 
     https
         .get(url, function (response) {
             var body = '';
-
             response.on('data', function (chunk) {
                 body += chunk;
             });
-
             response.on('end', function () {
                 global.jsonResponse = JSON.parse(body);
-                // Simplifying W03 rendering...
                 renderIndex(req, res, global.jsonResponse);
             });
         })
@@ -59,7 +46,6 @@ exports.processJson = (req, res, next) => {
         });
 };
 
-// New code for W08...
 exports.getIndex = (req, res, next) => {
     renderIndex(req, res, global.jsonResponse); // Render page.
 };
